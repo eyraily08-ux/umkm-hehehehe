@@ -748,51 +748,61 @@
   </section>
 
   <!-- UMKM LIST -->
-  <section class="umkm-section" id="daftar">
-    <div class="section-title">
-      <span>Daftar Usaha Lokal</span>
-      <h2>Daftar UMKM</h2>
-      <p>
-        Lihat informasi singkat UMKM Desa Mekarwangi. Data di bawah ini masih contoh
-        dan bisa diganti dengan data asli nanti.
-      </p>
+<section class="umkm-section" id="daftar">
+  <div class="section-title">
+    <span>Daftar Usaha Lokal</span>
+    <h2>Daftar UMKM</h2>
+    <p>
+      Lihat informasi singkat UMKM Desa Mekarwangi. Klik tombol detail
+      untuk melihat informasi lengkap mengenai usaha tersebut.
+    </p>
+  </div>
+
+  <div class="umkm-grid" id="umkmGrid"></div>
+</section>
+
+<!-- DETAIL MODAL -->
+<div id="detailModal" class="modal">
+  <div class="modal-content">
+    <div id="modalImage" class="modal-img"></div>
+
+    <div class="modal-body">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+
+      <span id="modalCategory" class="category"></span>
+      <h2 id="modalName"></h2>
+
+      <p id="modalDescription"></p>
+
+      <div class="modal-info">
+        <div class="info-detail">
+          <strong>Pemilik</strong>
+          <span id="modalOwner"></span>
+        </div>
+
+        <div class="info-detail">
+          <strong>Alamat</strong>
+          <span id="modalAddress"></span>
+        </div>
+
+        <div class="info-detail">
+          <strong>Produk</strong>
+          <span id="modalProduct"></span>
+        </div>
+
+        <div class="info-detail">
+          <strong>Jam Operasional</strong>
+          <span id="modalHours"></span>
+        </div>
+      </div>
+
+      <div class="modal-buttons">
+        <a id="modalWhatsapp" href="#" target="_blank" class="btn-wa">Hubungi via WhatsApp</a>
+        <a id="modalMaps" href="#" target="_blank" class="btn-map">Lihat di Google Maps</a>
+      </div>
     </div>
-
-    <div class="umkm-grid">
-      <div class="umkm-card">
-        <div class="umkm-img" style="background-image: url('images/umkm-1.jpg');"></div>
-        <div class="umkm-body">
-          <span class="category">Makanan Ringan</span>
-          <h3>Keripik Singkong Bu Sari</h3>
-          <p><strong>Alamat:</strong> Dusun 1, Desa Mekarwangi</p>
-          <p>Keripik singkong original dan pedas dengan bahan lokal.</p>
-          <a href="#" class="detail-link">Lihat Detail</a>
-        </div>
-      </div>
-
-      <div class="umkm-card">
-        <div class="umkm-img" style="background-image: url('images/umkm-2.jpg');"></div>
-        <div class="umkm-body">
-          <span class="category">Minuman</span>
-          <h3>Kopi Wangi Desa</h3>
-          <p><strong>Alamat:</strong> Dusun 2, Desa Mekarwangi</p>
-          <p>Kopi lokal kemasan dan minuman siap saji khas desa.</p>
-          <a href="#" class="detail-link">Lihat Detail</a>
-        </div>
-      </div>
-
-      <div class="umkm-card">
-        <div class="umkm-img" style="background-image: url('images/umkm-3.jpg');"></div>
-        <div class="umkm-body">
-          <span class="category">Kerajinan</span>
-          <h3>Anyaman Mekar Jaya</h3>
-          <p><strong>Alamat:</strong> Dusun 3, Desa Mekarwangi</p>
-          <p>Kerajinan bambu dan rotan hasil produksi warga lokal.</p>
-          <a href="#" class="detail-link">Lihat Detail</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
+</div>
 
   <!-- REGISTER -->
   <section class="register-section">
