@@ -6,838 +6,238 @@
 
   <title>WebGIS UMKM Desa Mekarwangi</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #fffaf2;
-      color: #2d241c;
-    }
-
-    /* NAVBAR */
-    header {
-      width: 100%;
-      padding: 16px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 250, 242, 0.95);
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 999;
-      box-shadow: 0 4px 18px rgba(70, 45, 20, 0.08);
-      backdrop-filter: blur(8px);
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-circle {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #7b4b25;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .logo-text {
-      font-weight: bold;
-      color: #5e3519;
-      line-height: 1.2;
-    }
-
-    .logo-text small {
-      display: block;
-      font-weight: normal;
-      color: #8a674c;
-      font-size: 12px;
-    }
-
-    nav a {
-      margin-left: 26px;
-      text-decoration: none;
-      color: #3d2c20;
-      font-weight: 600;
-      font-size: 15px;
-    }
-
-    nav a:hover {
-      color: #a66c35;
-    }
-
-    .nav-button {
-      padding: 10px 20px;
-      background: #7b4b25;
-      color: white !important;
-      border-radius: 30px;
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      padding: 150px 7% 80px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 50px;
-      background:
-        radial-gradient(circle at top right, rgba(191, 132, 73, 0.25), transparent 35%),
-        linear-gradient(135deg, #fff6e8 0%, #f8dfbd 100%);
-    }
-
-    .hero-label {
-      display: inline-block;
-      background: #f1d5b5;
-      color: #6d3f1d;
-      padding: 9px 18px;
-      border-radius: 30px;
-      font-weight: bold;
-      margin-bottom: 18px;
-    }
-
-    .hero h1 {
-      font-size: 64px;
-      line-height: 1.05;
-      color: #5e3519;
-      margin: 0 0 12px;
-    }
-
-    .hero h2 {
-      font-size: 30px;
-      color: #8b5a2b;
-      margin: 0 0 20px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      line-height: 1.8;
-      max-width: 620px;
-      color: #4b3828;
-    }
-
-    .hero-buttons {
-      margin-top: 30px;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-      display: inline-block;
-      padding: 14px 26px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .btn-primary {
-      background: #7b4b25;
-      color: white;
-      box-shadow: 0 8px 20px rgba(123, 75, 37, 0.25);
-    }
-
-    .btn-secondary {
-      background: white;
-      color: #7b4b25;
-      border: 2px solid #7b4b25;
-    }
-
-    .hero-visual {
-      position: relative;
-      min-height: 430px;
-    }
-
-    .photo-main {
-      width: 85%;
-      height: 380px;
-      border-radius: 38px;
-      background:
-        linear-gradient(rgba(80, 50, 20, 0.15), rgba(80, 50, 20, 0.15)),
-        url("images/desa-1.jpg");
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 20px 50px rgba(70, 45, 20, 0.25);
-      margin-left: auto;
-    }
-
-    .photo-small {
-      position: absolute;
-      width: 210px;
-      height: 150px;
-      left: 0;
-      bottom: 10px;
-      border-radius: 28px;
-      background:
-        linear-gradient(rgba(80, 50, 20, 0.15), rgba(80, 50, 20, 0.15)),
-        url("images/desa-2.jpg");
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 14px 35px rgba(70, 45, 20, 0.22);
-      border: 7px solid #fffaf2;
-    }
-
-    .floating-card {
-      position: absolute;
-      right: 10px;
-      bottom: 0;
-      background: white;
-      padding: 18px 22px;
-      border-radius: 22px;
-      box-shadow: 0 14px 35px rgba(70, 45, 20, 0.18);
-      max-width: 240px;
-    }
-
-    .floating-card strong {
-      color: #6d3f1d;
-      font-size: 22px;
-    }
-
-    .floating-card p {
-      margin: 5px 0 0;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    /* SECTION GENERAL */
-    section {
-      padding: 80px 7%;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 42px;
-    }
-
-    .section-title span {
-      color: #a66c35;
-      font-weight: bold;
-    }
-
-    .section-title h2 {
-      font-size: 38px;
-      color: #5e3519;
-      margin: 10px 0;
-    }
-
-    .section-title p {
-      max-width: 760px;
-      margin: auto;
-      line-height: 1.8;
-      color: #5b4635;
-      font-size: 17px;
-    }
-
-    /* ABOUT */
-    .about {
-      background: #fffaf2;
-    }
-
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 45px;
-      align-items: center;
-    }
-
-    .about-text h2 {
-      color: #5e3519;
-      font-size: 38px;
-      margin-top: 0;
-    }
-
-    .about-text p {
-      line-height: 1.9;
-      font-size: 17px;
-      color: #4b3828;
-    }
-
-    .hashtag {
-      display: inline-block;
-      margin-top: 16px;
-      padding: 10px 18px;
-      background: #f1d5b5;
-      color: #6d3f1d;
-      border-radius: 30px;
-      font-weight: bold;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .gallery-img {
-      height: 180px;
-      border-radius: 24px;
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 8px 24px rgba(70, 45, 20, 0.12);
-    }
-
-    .img-1 { background-image: url("images/desa-1.jpg"); }
-    .img-2 { background-image: url("images/desa-2.jpg"); }
-    .img-3 { background-image: url("images/desa-3.jpg"); }
-    .img-4 { background-image: url("images/desa-4.jpg"); }
-
-    /* CTA STRIP */
-    .cta-strip {
-      background: #7b4b25;
-      color: white;
-      text-align: center;
-      padding: 36px 7%;
-    }
-
-    .cta-strip h2 {
-      margin: 0 0 10px;
-      font-size: 30px;
-    }
-
-    .cta-strip p {
-      margin: 0 0 20px;
-      color: #f6e2c9;
-    }
-
-    .cta-strip a {
-      display: inline-block;
-      background: white;
-      color: #7b4b25;
-      padding: 12px 24px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* MAP */
-    .map-section {
-      background: #fff4e4;
-    }
-
-    .map-layout {
-      display: grid;
-      grid-template-columns: 0.8fr 1.4fr;
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    .legend-box,
-    .map-placeholder {
-      background: white;
-      border-radius: 28px;
-      box-shadow: 0 12px 35px rgba(70, 45, 20, 0.12);
-    }
-
-    .legend-box {
-      padding: 28px;
-    }
-
-    .legend-box h3 {
-      margin-top: 0;
-      color: #5e3519;
-      font-size: 24px;
-    }
-
-    .legend-item {
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: #fff4e4;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-    }
-
-    .legend-dot {
-      width: 14px;
-      height: 14px;
-      background: #7b4b25;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .map-placeholder {
-      min-height: 460px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-      text-align: center;
-      border: 3px dashed #c9965d;
-      background:
-        linear-gradient(rgba(255, 250, 242, 0.85), rgba(255, 250, 242, 0.85)),
-        repeating-linear-gradient(
-          45deg,
-          #f2ddc2 0,
-          #f2ddc2 10px,
-          #fff4e4 10px,
-          #fff4e4 20px
-        );
-    }
-
-    .map-placeholder h3 {
-      color: #6d3f1d;
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    .map-placeholder p {
-      color: #5b4635;
-      line-height: 1.7;
-    }
-
-    /* UMKM CARDS */
-    .umkm-section {
-      background: #fffaf2;
-    }
-
-    .umkm-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 26px;
-    }
-
-    .umkm-card {
-      background: white;
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 12px 35px rgba(70, 45, 20, 0.12);
-      transition: 0.2s;
-    }
-
-    .umkm-card:hover {
-      transform: translateY(-6px);
-    }
-
-    .umkm-img {
-      height: 185px;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .umkm-body {
-      padding: 24px;
-    }
-
-    .category {
-      display: inline-block;
-      background: #f1d5b5;
-      color: #6d3f1d;
-      padding: 7px 14px;
-      border-radius: 30px;
-      font-size: 13px;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-
-    .umkm-body h3 {
-      margin: 0 0 10px;
-      color: #5e3519;
-      font-size: 22px;
-    }
-
-    .umkm-body p {
-      color: #5b4635;
-      line-height: 1.6;
-      margin: 8px 0;
-    }
-
-    .detail-link {
-      display: inline-block;
-      margin-top: 12px;
-      color: #7b4b25;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* REGISTER */
-    .register-section {
-      background: #fff4e4;
-    }
-
-    .register-box {
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-      background: white;
-      padding: 48px;
-      border-radius: 34px;
-      box-shadow: 0 12px 35px rgba(70, 45, 20, 0.12);
-    }
-
-    .register-box h2 {
-      color: #5e3519;
-      font-size: 34px;
-      margin-top: 0;
-    }
-
-    .register-box p {
-      line-height: 1.8;
-      color: #5b4635;
-      font-size: 17px;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #4b2b15;
-      color: white;
-      padding: 50px 7% 28px;
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      gap: 36px;
-      margin-bottom: 34px;
-    }
-
-    .footer-logo {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 14px;
-    }
-
-    .footer-logo .logo-circle {
-      background: #f1d5b5;
-      color: #4b2b15;
-    }
-
-    footer h3 {
-      margin-top: 0;
-      color: #f1d5b5;
-    }
-
-    footer p,
-    footer a {
-      color: #f6e2c9;
-      line-height: 1.7;
-      text-decoration: none;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.18);
-      padding-top: 20px;
-      text-align: center;
-      color: #f6e2c9;
-      font-size: 14px;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      header {
-        padding: 14px 5%;
-      }
-
-      nav {
-        display: none;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 130px 6% 70px;
-        text-align: center;
-      }
-
-      .hero h1 {
-        font-size: 46px;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero-visual {
-        min-height: 360px;
-      }
-
-      .photo-main {
-        width: 100%;
-        height: 310px;
-      }
-
-      .about-content,
-      .map-layout,
-      .footer-content {
-        grid-template-columns: 1fr;
-      }
-
-      .about-text {
-        text-align: center;
-      }
-
-      .section-title h2 {
-        font-size: 31px;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .hero h1 {
-        font-size: 38px;
-      }
-
-      .hero h2 {
-        font-size: 23px;
-      }
-
-      .photo-small,
-      .floating-card {
-        display: none;
-      }
-
-      section {
-        padding: 60px 6%;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .register-box {
-        padding: 34px 24px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
   <!-- NAVBAR -->
-  <header>
-    <div class="logo-area">
-      <div class="logo-circle">KKN</div>
-      <div class="logo-text">
-        UMKM Mekarwangi
-        <small>WebGIS Potensi Lokal</small>
+  <header class="navbar">
+    <div class="brand">
+      <div class="brand-logo">KKN</div>
+      <div>
+        <h3>UMKM Mekarwangi</h3>
+        <p>WebGIS Potensi Lokal</p>
       </div>
     </div>
 
-    <nav>
+    <nav class="nav-menu">
       <a href="#home">Home</a>
+      <a href="#tentang">Tentang</a>
       <a href="#peta">Peta UMKM</a>
       <a href="#daftar">Daftar UMKM</a>
-      <a href="#tentang">Tentang</a>
-      <a href="#peta" class="nav-button">Jelajahi</a>
+      <a href="#daftar" class="nav-btn">Jelajahi</a>
     </nav>
   </header>
 
   <!-- HERO -->
   <section class="hero" id="home">
-    <div>
-      <span class="hero-label">Desa Mekarwangi</span>
+    <div class="hero-content">
+      <span class="label">Desa Mekarwangi</span>
+
       <h1>WebGIS UMKM</h1>
-      <h2>Jelajahi UMKM Lokal</h2>
+      <h2>Jelajahi Potensi Usaha Lokal</h2>
+
       <p>
-        Temukan produk unggulan Desa Mekarwangi, lihat informasi usahanya,
-        dan dukung pertumbuhan ekonomi lokal melalui promosi UMKM desa.
+        Temukan berbagai UMKM Desa Mekarwangi, lihat informasi usahanya,
+        dan dukung perkembangan ekonomi lokal melalui promosi digital.
       </p>
 
       <div class="hero-buttons">
         <a href="#peta" class="btn-primary">Jelajahi Peta</a>
-        <a href="#daftar" class="btn-secondary">Lihat Daftar</a>
+        <a href="#daftar" class="btn-secondary">Lihat Daftar UMKM</a>
       </div>
     </div>
 
-    <div class="hero-visual">
-      <div class="photo-main"></div>
-      <div class="photo-small"></div>
-
-      <div class="floating-card">
-        <strong>UMKM Lokal</strong>
-        <p>Produk desa, usaha warga, dan potensi ekonomi lokal dalam satu website.</p>
+    <div class="hero-image">
+      <div class="image-main"></div>
+      <div class="image-card">
+        <h3>UMKM Lokal</h3>
+        <p>Produk desa, usaha warga, dan potensi ekonomi lokal.</p>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- TENTANG -->
   <section class="about" id="tentang">
-    <div class="about-content">
-      <div class="about-text">
-        <h2>Mekarwangi, Desa yang Tumbuh Bersama UMKM</h2>
-        <p>
-          Dari potensi lokal yang sederhana, Desa Mekarwangi terus bergerak
-          untuk memperkenalkan produk-produk autentik warganya. Website ini
-          dibuat agar UMKM lebih mudah dikenali, dijangkau, dan berkembang.
-        </p>
-        <p>
-          Melalui WebGIS UMKM, masyarakat dapat melihat daftar usaha lokal,
-          mengenal produk yang ditawarkan, serta menemukan informasi dasar
-          mengenai pelaku UMKM di desa.
-        </p>
-        <span class="hashtag">#CintaiProdukLokal</span>
-      </div>
+    <div class="about-text">
+      <span class="section-label">Tentang Desa</span>
+      <h2>Desa yang Tumbuh Bersama UMKM</h2>
 
-      <div class="gallery-grid">
-        <div class="gallery-img img-1"></div>
-        <div class="gallery-img img-2"></div>
-        <div class="gallery-img img-3"></div>
-        <div class="gallery-img img-4"></div>
-      </div>
+      <p>
+        Desa Mekarwangi memiliki potensi usaha lokal yang beragam, mulai dari
+        makanan, minuman, kerajinan, jasa, hingga kebutuhan rumah tangga.
+        Website ini dibuat sebagai media pendataan dan promosi UMKM desa.
+      </p>
+
+      <p>
+        Melalui WebGIS UMKM, masyarakat dapat mengenal usaha lokal, melihat
+        informasi produk, serta menghubungi pelaku UMKM dengan lebih mudah.
+      </p>
+
+      <span class="hashtag">#CintaiProdukLokal</span>
+    </div>
+
+    <div class="about-gallery">
+      <div class="gallery-img img-1"></div>
+      <div class="gallery-img img-2"></div>
+      <div class="gallery-img img-3"></div>
+      <div class="gallery-img img-4"></div>
     </div>
   </section>
 
-  <!-- CTA STRIP -->
-  <div class="cta-strip">
-    <h2>Beli produk lokal Mekarwangi!</h2>
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Beli Produk Lokal Mekarwangi!</h2>
     <p>Dukung UMKM desa agar semakin dikenal dan berkembang.</p>
     <a href="#daftar">Lihat Produk UMKM</a>
-  </div>
+  </section>
 
-  <!-- MAP PLACEHOLDER -->
+  <!-- PETA PLACEHOLDER -->
   <section class="map-section" id="peta">
     <div class="section-title">
-      <span>Peta Interaktif</span>
+      <span class="section-label">Peta Interaktif</span>
       <h2>Peta UMKM</h2>
       <p>
-        Bagian ini nantinya akan menampilkan lokasi UMKM. Untuk sekarang,
-        peta masih dibuat sebagai placeholder dulu.
+        Bagian ini nantinya akan menampilkan lokasi UMKM Desa Mekarwangi.
+        Untuk sementara, peta masih berupa placeholder.
       </p>
     </div>
 
-    <div class="map-layout">
-      <div class="legend-box">
-        <h3>Legenda</h3>
-        <p>Klik item untuk fokus ke kategori UMKM.</p>
+    <div class="map-wrapper">
+      <div class="map-legend">
+        <h3>Legenda Kategori</h3>
 
         <div class="legend-item">
-          <div class="legend-dot"></div>
-          <span>Makanan & Minuman</span>
+          <span></span>
+          <p>Makanan & Minuman</p>
         </div>
 
         <div class="legend-item">
-          <div class="legend-dot"></div>
-          <span>Kerajinan</span>
+          <span></span>
+          <p>Kerajinan</p>
         </div>
 
         <div class="legend-item">
-          <div class="legend-dot"></div>
-          <span>Jasa</span>
+          <span></span>
+          <p>Jasa</p>
         </div>
 
         <div class="legend-item">
-          <div class="legend-dot"></div>
-          <span>Produk Rumah Tangga</span>
+          <span></span>
+          <p>Produk Rumah Tangga</p>
         </div>
       </div>
 
       <div class="map-placeholder">
-        <div>
-          <h3>Peta UMKM akan ditambahkan di sini</h3>
-          <p>
-            Nanti bagian ini bisa diganti dengan peta interaktif Leaflet
-            setelah data latitude dan longitude UMKM sudah tersedia.
-          </p>
-        </div>
+        <h3>Peta UMKM akan ditambahkan di sini</h3>
+        <p>
+          Setelah data latitude dan longitude UMKM tersedia, bagian ini bisa
+          diganti menjadi peta interaktif.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- UMKM LIST -->
-<section class="umkm-section" id="daftar">
-  <div class="section-title">
-    <span>Daftar Usaha Lokal</span>
-    <h2>Daftar UMKM</h2>
-    <p>
-      Lihat informasi singkat UMKM Desa Mekarwangi. Klik tombol detail
-      untuk melihat informasi lengkap mengenai usaha tersebut.
-    </p>
-  </div>
+  <!-- DAFTAR UMKM -->
+  <section class="umkm-section" id="daftar">
+    <div class="section-title">
+      <span class="section-label">Daftar Usaha Lokal</span>
+      <h2>Daftar UMKM</h2>
+      <p>
+        Klik tombol detail untuk melihat informasi lengkap mengenai UMKM.
+      </p>
+    </div>
 
-  <div class="umkm-grid" id="umkmGrid"></div>
-</section>
+    <div class="umkm-grid" id="umkmGrid"></div>
+  </section>
 
-<!-- DETAIL MODAL -->
-<div id="detailModal" class="modal">
-  <div class="modal-content">
-    <div id="modalImage" class="modal-img"></div>
+  <!-- MODAL DETAIL -->
+  <div class="modal" id="detailModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">×</button>
 
-    <div class="modal-body">
-      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <div class="modal-image" id="modalImage"></div>
 
-      <span id="modalCategory" class="category"></span>
-      <h2 id="modalName"></h2>
+      <div class="modal-content">
+        <span class="category" id="modalCategory"></span>
+        <h2 id="modalName"></h2>
+        <p id="modalDescription"></p>
 
-      <p id="modalDescription"></p>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <strong>Pemilik</strong>
+            <span id="modalOwner"></span>
+          </div>
 
-      <div class="modal-info">
-        <div class="info-detail">
-          <strong>Pemilik</strong>
-          <span id="modalOwner"></span>
+          <div class="detail-item">
+            <strong>Alamat</strong>
+            <span id="modalAddress"></span>
+          </div>
+
+          <div class="detail-item">
+            <strong>Produk</strong>
+            <span id="modalProduct"></span>
+          </div>
+
+          <div class="detail-item">
+            <strong>Jam Operasional</strong>
+            <span id="modalHours"></span>
+          </div>
+
+          <div class="detail-item">
+            <strong>Kontak</strong>
+            <span id="modalPhone"></span>
+          </div>
+
+          <div class="detail-item">
+            <strong>Koordinat</strong>
+            <span id="modalCoordinate"></span>
+          </div>
         </div>
 
-        <div class="info-detail">
-          <strong>Alamat</strong>
-          <span id="modalAddress"></span>
-        </div>
+        <div class="modal-buttons">
+          <a href="#" id="modalWhatsapp" target="_blank" class="btn-primary">
+            Hubungi via WhatsApp
+          </a>
 
-        <div class="info-detail">
-          <strong>Produk</strong>
-          <span id="modalProduct"></span>
+          <a href="#" id="modalMaps" target="_blank" class="btn-secondary">
+            Lihat di Google Maps
+          </a>
         </div>
-
-        <div class="info-detail">
-          <strong>Jam Operasional</strong>
-          <span id="modalHours"></span>
-        </div>
-      </div>
-
-      <div class="modal-buttons">
-        <a id="modalWhatsapp" href="#" target="_blank" class="btn-wa">Hubungi via WhatsApp</a>
-        <a id="modalMaps" href="#" target="_blank" class="btn-map">Lihat di Google Maps</a>
       </div>
     </div>
   </div>
-</div>
 
-  <!-- REGISTER -->
-  <section class="register-section">
+  <!-- PENDAFTARAN -->
+  <section class="register">
     <div class="register-box">
-      <h2>UMKM Mekarwangi belum terdaftar?</h2>
+      <h2>UMKM Belum Terdaftar?</h2>
       <p>
-        Daftarkan usaha Anda secara gratis agar bisa tampil di WebGIS UMKM
-        dan lebih mudah ditemukan oleh calon pembeli.
+        Daftarkan usaha Anda agar dapat ditampilkan dalam WebGIS UMKM
+        Desa Mekarwangi.
       </p>
       <a href="#" class="btn-primary">Daftarkan UMKM Anda</a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <div class="footer-content">
+  <footer class="footer">
+    <div class="footer-grid">
       <div>
-        <div class="footer-logo">
-          <div class="logo-circle">KKN</div>
-          <div>
-            <strong>WebGIS UMKM Desa Mekarwangi</strong>
-          </div>
-        </div>
+        <h3>WebGIS UMKM Desa Mekarwangi</h3>
         <p>
-          Website ini dibuat untuk membantu masyarakat mengenal UMKM lokal,
-          melihat informasi usaha, dan mendukung produk desa.
+          Website ini dibuat untuk membantu pendataan, promosi,
+          dan pengembangan UMKM lokal.
         </p>
       </div>
 
       <div>
         <h3>Navigasi</h3>
-        <p><a href="#home">Home</a></p>
-        <p><a href="#peta">Peta UMKM</a></p>
-        <p><a href="#daftar">Daftar UMKM</a></p>
-        <p><a href="#tentang">Tentang</a></p>
+        <a href="#home">Home</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#peta">Peta UMKM</a>
+        <a href="#daftar">Daftar UMKM</a>
       </div>
 
       <div>
@@ -853,5 +253,6 @@
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
